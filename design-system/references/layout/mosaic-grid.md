@@ -11,13 +11,13 @@
 
 ## Rails fixos
 
-As colunas laterais têm largura fixa; a coluna central é fluida (`1fr`).
+As colunas laterais têm largura fixa; a coluna central é fluida (`1fr`). Valores dos tokens em [tokens.md](../tokens.md).
 
-| Rail                      | Token      | Valor  |
-| ------------------------- | ---------- | ------ |
-| Coluna lateral            | `--side`   | `56px` |
-| Altura header             | `--header` | `68px` |
-| Altura de célula clicável | `--touch`  | `56px` |
+| Rail                      | Token      |
+| ------------------------- | ---------- |
+| Coluna lateral            | `--side`   |
+| Altura header             | `--header` |
+| Altura de célula clicável | `--touch`  |
 
 ## Estrutura vertical (`.app`)
 
@@ -52,6 +52,37 @@ Container flex em coluna, com borda externa `1px solid var(--bd)` e altura míni
 - Espaçador (`.sb-spacer`): cresce (`flex-grow: 1`) empurrando as setas para o rodapé e mantém `border-bottom`.
 
 O resultado é que cada célula fica cercada sem duplicar linhas: bordas são atribuídas em um único sentido por vizinhança.
+
+## Markup de referência
+
+```html
+<div class="app">
+  <header class="header">        <!-- grid: 56px 1fr 56px -->
+    <div class="c-logo">…</div>
+    <div class="c-brand">…</div>
+    <div class="c-menu">…</div>
+  </header>
+
+  <div class="author-row">      <!-- grid: 56px 1fr 56px -->
+    <div class="c-avatar">…</div>
+    <div class="c-author-info">…</div>
+    <div class="c-eye">…</div>
+  </div>
+
+  <div class="body-grid">       <!-- grid: 1fr 56px -->
+    <div class="content-col">…</div>
+    <div class="sidebar-col">…</div>
+  </div>
+</div>
+```
+
+## Regras normativas (RFC 2119)
+
+- O agente MUST manter exatamente 3 colunas em `.header` e `.author-row` (`56px 1fr 56px`).
+- O agente MUST manter exatamente 2 colunas em `.body-grid` (`1fr 56px`).
+- O agente SHALL usar `border: 1px solid var(--bd)` como único divisor visual entre células.
+- O agente MUST NOT usar `background-color` para separar células.
+- O agente MUST NOT aplicar `border-radius` a `.app` ou a qualquer célula.
 
 ## Relacionados
 

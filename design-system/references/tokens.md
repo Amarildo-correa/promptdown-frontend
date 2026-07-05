@@ -41,6 +41,15 @@ Tokens que controlam a malha e as áreas clicáveis (mobile-first).
 
 Justificativa do `56px`: WCAG 2.5.5 exige mínimo `44×44px`. Como os botões são adjacentes e separados apenas por borda (sem espaçamento), o alvo é elevado para `56px` para evitar toque duplo acidental. Ver [components/button.md](./components/button.md).
 
+### Tokens com valor idêntico — regra normativa (RFC 2119)
+
+`--touch` e `--side` valem `56px` cada, mas têm papéis distintos. Um agente que os trate como intercambiáveis quebrará a semântica de layout.
+
+| Token     | SHALL ser usado para                        | MUST NOT ser usado para              |
+| --------- | ------------------------------------------- | ------------------------------------ |
+| `--touch` | `height` de qualquer célula clicável        | `width` de coluna ou pixel do logo   |
+| `--side`  | `width` das colunas laterais (rail, avatar) | `height` de qualquer elemento        |
+
 ## Tipografia
 
 Fonte única, monoespaçada, reforçando a estética de terminal.
