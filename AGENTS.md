@@ -8,9 +8,9 @@ O repositório `promptdown-frontend` é um **multirepo** dedicado exclusivamente
 
 Este repositório contém apenas a interface da aplicação, incluindo páginas, componentes, estilos, gerenciamento de estado e integração com a API por meio de um contrato. Toda a comunicação com o backend é realizada através da `API_BASE_URL`, mantendo o frontend desacoplado da implementação do servidor.
 
-O contrato da API é sincronizado para `api/` via **Git Subtree**, a partir do repositório oficial de contratos. O agente MUST NOT editar `api/` manualmente para "corrigir" o contrato; alterações de contrato pertencem ao repositório de origem.
+O contrato da API é sincronizado para `api/` a partir do repositório oficial de contratos. A sincronização é **automatizada via GitHub Actions** ([`.github/workflows/sync-contract.yml`](.github/workflows/sync-contract.yml)), que executa um **Git Subtree** pull agendado/sob demanda — basta um `git pull` neste repositório para obter a revisão correspondente. O agente MUST NOT editar `api/` manualmente para "corrigir" o contrato; alterações de contrato pertencem ao repositório de origem (proteção reforçada por [`.github/CODEOWNERS`](.github/CODEOWNERS)).
 
-Atualizar: `git subtree pull --prefix=api contracts main --squash` (nunca `add` — o subtree já existe).
+Fallback manual (quando necessário rodar localmente): `git subtree pull --prefix=api contracts main --squash` (nunca `add` — o subtree já existe).
 Remote ausente? `git remote add contracts https://github.com/Amarildo-correa/promptdown-contracts.git`.
 
 ## Estado atual do repositório

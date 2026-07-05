@@ -11,7 +11,7 @@ Inventário canônico de arquivos e responsabilidades do repositório — **font
 | `README.md`     | Arquivo | Visão geral, setup e comandos.              |
 | `AGENTS.md`     | Arquivo | Instruções e regras para agentes de IA.     |
 | `CLAUDE.md`     | Arquivo | Ponteiro para `AGENTS.md` (Claude Code).    |
-| `package.json`  | Arquivo | Scripts (JSON Server, servidor estático).   |
+| `package.json`  | Arquivo | Scripts (Vitest, servidor estático).        |
 | `.gitignore`    | Arquivo | Arquivos e diretórios ignorados pelo Git.   |
 | `.editorconfig` | Arquivo | Consistência de formatação entre editores.  |
 | `.env.example`  | Arquivo | Exemplo de configuração da URL base da API. |
@@ -22,13 +22,21 @@ Inventário canônico de arquivos e responsabilidades do repositório — **font
 | --------------------------- | ------- | ----------------------------------------------- |
 | `.specs/project/STRUCTURE.md` | Arquivo | Este inventário canônico de arquivos.         |
 
+## `.github/`
+
+| Caminho                                | Tipo    | Descrição                                              |
+| -------------------------------------- | ------- | ------------------------------------------------------ |
+| `.github/workflows/sync-contract.yml`  | Arquivo | Sincroniza `api/` a partir de `promptdown-contracts`.  |
+| `.github/CODEOWNERS`                    | Arquivo | Revisão obrigatória de `api/` (reforça read-only).     |
+
 ## `api/`
+
+Pasta **somente leitura**, sincronizada de `promptdown-contracts` (ver `.github/workflows/sync-contract.yml`). Não editar manualmente.
 
 | Caminho            | Tipo    | Descrição                                   |
 | ------------------ | ------- | ------------------------------------------- |
-| `api/db.json`      | Arquivo | Registros permanentes (JSON Server).        |
-| `api/routes.json`  | Arquivo | Rewrites de rotas do JSON Server.           |
 | `api/openapi.yaml` | Arquivo | Contrato OpenAPI (fonte da verdade da API). |
+| `api/CHANGELOG.md` | Arquivo | Histórico de mudanças do contrato.          |
 
 ## `public/`
 

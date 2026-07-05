@@ -1,0 +1,21 @@
+{
+  "name": "promptdown-frontend",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Frontend da plataforma PromptDown (HTML, CSS puro e JavaScript Vanilla ES Modules).",
+  "type": "module",
+  "scripts": {
+    "serve": "npx --yes serve ./src",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^2.1.0",
+    "jsdom": "^25.0.0",
+    "vitest": "^2.1.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

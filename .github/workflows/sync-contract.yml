@@ -1,0 +1,58 @@
+# Sincronização automática do contrato da API para a pasta `api/`.
+#
+# A pasta `api/` é a cópia SOMENTE LEITURA do contrato oficial, mantida em
+# `promptdown-contracts` e trazida para cá via Git Subtree. Este workflow
+# automatiza esse pull (requisito arquitetural: sync via GitHub Actions),
+# de modo que basta um `git pull` neste repositório para obter a revisão
+# do contrato correspondente a esta versão do frontend.
+#
+# NUNCA edite `api/` manualmente — alterações de contrato pertencem ao
+# repositório de origem e chegam por este processo.
+
+name: sync-contract
+
+on:
+  # Execução manual sob demanda.
+  workflow_dispatch:
+  # Verificação periódica (segunda a sexta, 06:00 UTC).
+  schedule:
+    - cron: "0 6 * * 1-5"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-contract
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (histórico completo — exigido pelo subtree)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configurar identidade do Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Sincronizar api/ a partir de promptdown-contracts
+        run: |
+          set -euo pipefail
+          git remote add contracts https://github.com/Amarildo-correa/promptdown-contracts.git || true
+          git fetch contracts main
+          # --squash mantém o histórico deste repo limpo (um commit por sync).
+          git subtree pull --prefix=api contracts main --squash \
+            -m "chore(api): sync contract from promptdown-contracts"
+
+      - name: Publicar alterações (se houver)
+        run: |
+          set -euo pipefail
+          if [ -n "$(git log origin/${GITHUB_REF_NAME}..HEAD --oneline)" ]; then
+            git push origin HEAD:${GITHUB_REF_NAME}
+          else
+            echo "Contrato já está atualizado — nada a publicar."
+          fi

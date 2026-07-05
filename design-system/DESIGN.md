@@ -2,6 +2,10 @@
 
 Documentação do Design System extraída de `promptdown.html`. Cada arquivo tem responsabilidade única; valores literais vivem apenas em `tokens.md` e são referenciados pelos demais.
 
+## Produto
+
+O produto-alvo é o **admin CRUD de *records*** do PromptDown (ver `.specs/project/STRUCTURE.md` e `src/js/`). O Design System descrito aqui é a **fundação visual** desse produto: a estética de terminal e o layout em mosaico definem a base sobre a qual os componentes de CRUD (formulário, tabela, modal, toast) serão construídos. O mosaico é, portanto, um **caso de layout** — não o produto inteiro.
+
 ## Fundamentos
 
 Estética de terminal, mobile-first. Fundo escuro único, cor sólida (sem gradiente), sem sombra. A interface é um **mosaico de blocos** dividido somente por bordas. Fonte monoespaçada em toda a tela.
@@ -33,17 +37,17 @@ Estética de terminal, mobile-first. Fundo escuro único, cor sólida (sem gradi
 
 ## Escopo desta documentação
 
-Documenta **apenas** o que existe em `promptdown.html`. Os arquivos abaixo fazem parte da estrutura do repositório mas **não têm correspondência** no arquivo atual e foram mantidos vazios:
+Documenta **apenas** o que já existe implementado (hoje, a fundação de layout extraída de `promptdown.html`). Os arquivos abaixo compõem o Design System do produto CRUD mas estão **vazios porque ainda não há UI correspondente implementada** — devem ser preenchidos junto com a implementação (guardrail em `AGENTS.md`: documentar só o que existe no código):
 
-| Documento vazio                             | Motivo                                                     |
-| ------------------------------------------- | ---------------------------------------------------------- |
-| `references/themes.md`                      | Não há tema claro/escuro nem `[data-theme]`; paleta única. |
-| `references/components/form.md`             | Não há formulários.                                        |
-| `references/components/table.md`            | Não há tabelas.                                            |
-| `references/components/modal.md`            | Não há modais.                                             |
-| `references/components/toast.md`            | Não há notificações.                                       |
-| `references/patterns/crud-form-flow.md`     | Não há fluxo CRUD.                                         |
-| `references/patterns/confirmation-modal.md` | Não há modal de confirmação.                               |
-| `references/patterns/feedback-toast.md`     | Não há toasts.                                             |
+| Documento vazio                             | Motivo                                                        |
+| ------------------------------------------- | ------------------------------------------------------------- |
+| `references/themes.md`                      | Tema claro/escuro (`[data-theme]`) planejado; ainda não implementado (paleta única atual). |
+| `references/components/form.md`             | Formulário do CRUD planejado; ainda não implementado.         |
+| `references/components/table.md`            | Tabela de registros planejada; ainda não implementada.        |
+| `references/components/modal.md`            | Modal de confirmação planejado; ainda não implementado.       |
+| `references/components/toast.md`            | Notificações planejadas; ainda não implementadas.             |
+| `references/patterns/crud-form-flow.md`     | Fluxo CRUD planejado; ainda não implementado.                 |
+| `references/patterns/confirmation-modal.md` | Padrão de confirmação planejado; ainda não implementado.      |
+| `references/patterns/feedback-toast.md`     | Fluxo de feedback via toast planejado; ainda não implementado. |
 
 Documentos criados fora da estrutura original, por representarem conceitos presentes no arquivo e ainda não contemplados: `layout/mosaic-grid.md`, `components/icon.md`, `components/avatar.md`, `components/brand.md`, `components/markdown-content.md`.

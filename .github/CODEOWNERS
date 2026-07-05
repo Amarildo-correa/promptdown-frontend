@@ -1,0 +1,9 @@
+# CODEOWNERS — proteção de revisão.
+#
+# A pasta `api/` é SOMENTE LEITURA: seu conteúdo é sincronizado a partir de
+# `promptdown-contracts` pelo workflow .github/workflows/sync-contract.yml.
+# Alterações manuais em api/ NÃO são permitidas. Este owner força revisão
+# obrigatória de qualquer PR que toque a pasta.
+#
+# Requer, no GitHub, "Require review from Code Owners" na branch protegida.
+/api/ @Amarildo-correa
