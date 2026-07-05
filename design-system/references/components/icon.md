@@ -33,6 +33,20 @@ O ícone hambúrguer do menu usa `stroke-width="2"` (definido no próprio `<svg>
 
 > Os glifos `↑` e `↓` das setas de navegação são caracteres de texto, não SVGs. Ver [button.md](./button.md).
 
+## Markup de referência
+
+```html
+<svg class="icon" viewBox="0 0 24 24">
+  <!-- paths do ícone (stroke, sem fill) -->
+</svg>
+```
+
+## Regras normativas (RFC 2119)
+
+- O agente MUST aplicar `pointer-events: none` ao SVG.
+- O agente MUST NOT adicionar `fill` a ícones de interface; SHALL usar apenas `stroke`.
+- O agente MUST NOT criar ícones maiores que `18×18px` dentro de células.
+
 ## Acessibilidade
 
 `pointer-events: none` garante que o clique atravesse o ícone e seja capturado pela célula clicável. O significado acessível é fornecido pelo `aria-label` do botão que contém o ícone, não pelo SVG.

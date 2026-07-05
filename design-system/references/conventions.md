@@ -55,3 +55,15 @@ Reset local mínimo no topo da folha:
 - Todo elemento clicável recebe `role="button"`, `tabindex="0"` e `aria-label` descritivo.
 - Ícones puramente visuais recebem `pointer-events: none` (o clique é capturado pela célula) e, quando decorativos, `aria-hidden="true"`.
 - Ver notas por componente em [components/button.md](./components/button.md).
+
+## Proibições globais (RFC 2119)
+
+Regras normativas que preservam o brief de design de `promptdown.html`. O agente MUST NOT introduzir os seguintes padrões, especialmente nas zonas onde LLMs costumam alucinar:
+
+- MUST NOT usar `background-color` diferente de `var(--bg)` em qualquer célula do mosaico. A separação é feita apenas por borda.
+- MUST NOT usar `box-shadow` em nenhum elemento.
+- MUST NOT usar gradiente (`linear-gradient`, `radial-gradient`, `conic-gradient`).
+- MUST NOT aplicar `border-radius` em células do layout ou em `.app`. Cantos retos são intencionais.
+- MUST NOT reduzir `height` de célula clicável abaixo de `var(--touch)` (56px).
+- MUST NOT criar classes fora dos prefixos estabelecidos (`c-`, `sb-`, `md-`, `px`) sem antes documentar o novo prefixo nesta seção de nomenclatura.
+- MUST NOT renderizar markdown no corpo do prompt; os símbolos MUST permanecer literais. Ver [components/markdown-content.md](./components/markdown-content.md).

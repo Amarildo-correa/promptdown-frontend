@@ -53,6 +53,26 @@ Valores de `opacity` no `:active`:
 
 O mínimo de `44×44px` é elevado para `56px` porque os botões são adjacentes e separados apenas por borda, sem espaçamento de respiro. Isso evita que a polpa do dedo acione dois botões vizinhos. Token: `--touch`. Ver [tokens.md](../tokens.md).
 
+## Markup de referência
+
+```html
+<!-- Botão de ícone no rail — alvo 56×56px -->
+<div class="sb-item" role="button" tabindex="0" aria-label="Copiar prompt">
+  <svg class="icon" viewBox="0 0 24 24">…</svg>
+</div>
+
+<!-- Seta de navegação — alvo 56×56px -->
+<div class="sb-arrow" role="button" tabindex="0" aria-label="Rolar para cima">↑</div>
+```
+
+## Regras normativas (RFC 2119)
+
+- O agente MUST incluir `role="button"`, `tabindex="0"` e `aria-label` em todo botão.
+- O agente MUST NOT restringir o clique ao SVG; a célula inteira é o alvo.
+- O agente MUST NOT criar botões com `height` menor que `var(--touch)` (56px).
+- O agente MUST NOT adicionar `box-shadow`, gradiente ou `border-radius` ao botão.
+- O agente SHALL usar `opacity` no `:active` como único feedback de toque.
+
 ## Faça / Não faça
 
 | ✅ Faça                                    | ❌ Não faça                                        |
