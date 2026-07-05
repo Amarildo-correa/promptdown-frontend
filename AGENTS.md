@@ -4,14 +4,14 @@ Contexto de carregamento único para agentes de IA neste repositório. Referênc
 
 ## Projeto
 
-Visão geral em [`README.md`](README.md). Em resumo, para o agente: `promptdown-frontend` é o **multirepo do frontend** da aplicação PromptDown. Stack: HTML + CSS + JavaScript vanilla (ES Modules), servidor estático + JSON Server. Entry point: `src/index.html`.
+O repositório `promptdown-frontend` é um **multirepo** dedicado exclusivamente ao desenvolvimento do frontend da aplicação PromptDown.
+
+Este repositório contém apenas a interface da aplicação, incluindo páginas, componentes, estilos, gerenciamento de estado e integração com a API por meio de um contrato. Toda a comunicação com o backend é realizada através da `API_BASE_URL`, mantendo o frontend desacoplado da implementação do servidor.
 
 O contrato da API é sincronizado para `api/` via **Git Subtree**, a partir do repositório oficial de contratos. O agente MUST NOT editar `api/` manualmente para "corrigir" o contrato; alterações de contrato pertencem ao repositório de origem.
 
 Atualizar: `git subtree pull --prefix=api contracts main --squash` (nunca `add` — o subtree já existe).
 Remote ausente? `git remote add contracts https://github.com/Amarildo-correa/promptdown-contracts.git`.
-
-> **Conflito conhecido:** `api/README.md` traz uma seção "Contribuindo" mandando editar `openapi.yaml`. Aquele guia descreve o fluxo do **repositório upstream de contratos**, não deste. Neste repo `api/` é somente leitura (subtree) e o guia MUST NOT ser seguido aqui.
 
 ## Estado atual do repositório
 

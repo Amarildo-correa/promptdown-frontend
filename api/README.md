@@ -5,6 +5,7 @@ Especificação OpenAPI da API de Contratos do Promptdown. **Estágio inicial (W
 ## Visão Geral
 
 Este repositório é a **fonte de verdade** para o contrato da API de Contratos. Serve como ponto único de referência para:
+
 - Definição formal da interface via OpenAPI 3.0.3
 - Histórico de mudanças e versionamento (CHANGELOG)
 - Comunicação clara entre equipes sobre evolução da especificação
@@ -14,6 +15,7 @@ Consumidores (frontends, serviços, clientes) integram este repositório em suas
 ## Estado Atual
 
 A especificação está no **estágio inicial**, contendo apenas:
+
 - [x] Informações básicas da API (título, versão 1.0.0, descrição)
 - [x] Referência oficial da [Especificação OpenAPI 3.0.3](https://spec.openapis.org/oas/v3.0.3)
 - [ ] Nenhum endpoint implementado
@@ -37,32 +39,37 @@ A especificação está no **estágio inicial**, contendo apenas:
 Implementação planejada em fases futuras:
 
 ### Fase 1: Definição de Ambiente
+
 - [ ] `servers`: URLs dos ambientes (Production, Staging, Development)
 - [ ] `security`: Configuração de autenticação obrigatória
 
 ### Fase 2: Endpoints e Operações
+
 - [ ] `paths`: Endpoints CRUD para contratos
-  - `GET /contracts` — Listar contratos
-  - `POST /contracts` — Criar contrato
-  - `GET /contracts/{id}` — Obter contrato específico
-  - `PATCH /contracts/{id}` — Atualizar contrato
-  - `DELETE /contracts/{id}` — Deletar contrato
+    - `GET /contracts` — Listar contratos
+    - `POST /contracts` — Criar contrato
+    - `GET /contracts/{id}` — Obter contrato específico
+    - `PATCH /contracts/{id}` — Atualizar contrato
+    - `DELETE /contracts/{id}` — Deletar contrato
 
 ### Fase 3: Dados e Schemas
+
 - [ ] `components/schemas`: Modelos de dados
-  - Contract (entidade principal)
-  - CreateContractRequest / UpdateContractRequest (payloads)
-  - Error (resposta de erro padronizada)
-  - Pagination (metadados de listagem)
+    - Contract (entidade principal)
+    - CreateContractRequest / UpdateContractRequest (payloads)
+    - Error (resposta de erro padronizada)
+    - Pagination (metadados de listagem)
 - [ ] `components/responses`: Respostas padrão (200, 400, 401, 404, 422, 500)
 - [ ] `components/securitySchemes`: Autenticação Bearer Token (JWT)
 
 ### Fase 4: Recursos e Documentação
+
 - [ ] Exemplos em `examples/`: Requisições e respostas reais
 - [ ] Documentação de erros em `errors/`: Catálogo de códigos de erro
 - [ ] Guias de integração e versionamento
 
 ### Detalhes de Implementação
+
 - **Autenticação**: Bearer Token JWT obrigatório em todos os endpoints
 - **Paginação**: Suporte a listagem com limite, offset e metadados
 - **Validação**: Schemas JSON Schema com validação de entrada rigorosa
@@ -97,7 +104,9 @@ Este repositório é a fonte-da-verdade para o contrato da API. Mudanças na esp
 5. **Merge** aprovado atualiza a fonte de verdade e todos os consumidores fazem `git subtree pull`
 
 ### Validação
+
 Antes de fazer push, valide o YAML:
+
 ```bash
 # Instale um validador OpenAPI (ex.: Swagger CLI)
 swagger-cli validate openapi.yaml
