@@ -1,0 +1,21 @@
+# Variáveis de ambiente (segredos) — manter apenas .env.example versionado
+.env
+.env.local
+.env.*.local
+
+# Dependências
+node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Cobertura de testes (Vitest)
+coverage/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
