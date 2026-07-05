@@ -1,11 +1,26 @@
+# Estrutura do projeto
+
+Inventário canônico de arquivos e responsabilidades do repositório — **fonte da verdade** desta informação. Os demais documentos (ex.: `AGENTS.md`) referenciam este arquivo em vez de reproduzir a árvore.
+
+> Muitos arquivos abaixo são placeholders vazios (scaffolding intencional). O que já tem conteúdo vive em `design-system/references/` e `api/`. Ver `AGENTS.md` → "Estado atual do repositório".
+
+## Raiz
+
 | Caminho         | Tipo    | Descrição                                   |
 | --------------- | ------- | ------------------------------------------- |
 | `README.md`     | Arquivo | Visão geral, setup e comandos.              |
 | `AGENTS.md`     | Arquivo | Instruções e regras para agentes de IA.     |
+| `CLAUDE.md`     | Arquivo | Ponteiro para `AGENTS.md` (Claude Code).    |
 | `package.json`  | Arquivo | Scripts (JSON Server, servidor estático).   |
 | `.gitignore`    | Arquivo | Arquivos e diretórios ignorados pelo Git.   |
 | `.editorconfig` | Arquivo | Consistência de formatação entre editores.  |
 | `.env.example`  | Arquivo | Exemplo de configuração da URL base da API. |
+
+## `.specs/`
+
+| Caminho                     | Tipo    | Descrição                                       |
+| --------------------------- | ------- | ----------------------------------------------- |
+| `.specs/project/STRUCTURE.md` | Arquivo | Este inventário canônico de arquivos.         |
 
 ## `api/`
 

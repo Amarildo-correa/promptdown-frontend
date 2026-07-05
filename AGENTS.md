@@ -26,7 +26,7 @@ O agente MUST conferir se o arquivo correspondente tem conteúdo antes de assumi
 
 ## Arquitetura alvo (quando implementada)
 
-O inventário completo de arquivos e responsabilidades é `estrutura-projeto.md` (fonte da verdade). Pontos de entrada essenciais:
+O inventário completo de arquivos e responsabilidades é [`.specs/project/STRUCTURE.md`](.specs/project/STRUCTURE.md) (fonte da verdade). Pontos de entrada essenciais:
 
 | Caminho                          | Responsabilidade                                  |
 | -------------------------------- | ------------------------------------------------- |
