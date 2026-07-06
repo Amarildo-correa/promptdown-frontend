@@ -34,8 +34,8 @@ Vive em `.body-block` (padding, escala tipográfica e `line-height` em [tokens.m
 <div class="body-block">
   <p class="md-h1"># Objetivo</p>
   <p class="md-p">
-    Texto com <span class="md-code">`inline code`</span>
-    e <span class="md-strong">**ênfase**</span>.
+    Texto com <span class="md-code">`inline code`</span> e
+    <span class="md-strong">**ênfase**</span>.
   </p>
   <ul class="md-list">
     <li><span class="md-dash">-</span><span class="md-li-text">Item</span></li>

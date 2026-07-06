@@ -7,6 +7,7 @@
 Todos os valores de cor e dimensão vêm de CSS Custom Properties declaradas em `:root`. Componentes consomem `var(--token)` em vez de literais. Ver [tokens.md](./tokens.md).
 
 Exceções literais documentadas:
+
 - `#ffffff` na palavra "PROMPT".
 - Valores de tipografia e espaçamento aplicados por bloco (não tokenizados).
 
@@ -14,12 +15,12 @@ Exceções literais documentadas:
 
 O CSS usa prefixos por responsabilidade. Não é BEM estrito; é um sistema de namespaces curtos.
 
-| Prefixo   | Significado           | Exemplos                                             |
-| --------- | --------------------- | ---------------------------------------------------- |
-| `c-`      | Célula do cabeçalho / linha do autor | `.c-logo`, `.c-brand`, `.c-menu`, `.c-avatar`, `.c-author-info`, `.c-eye` |
-| `sb-`     | Sidebar (rail lateral) | `.sb-item`, `.sb-arrow`, `.sb-spacer`              |
-| `md-`     | Conteúdo markdown     | `.md-h1`, `.md-p`, `.md-code`, `.md-strong`, `.md-list`, `.md-dash`, `.md-li-text` |
-| `px`      | Pixel do logo         | `.px`, `.px.a`, `.px.hi`                              |
+| Prefixo | Significado                          | Exemplos                                                                           |
+| ------- | ------------------------------------ | ---------------------------------------------------------------------------------- |
+| `c-`    | Célula do cabeçalho / linha do autor | `.c-logo`, `.c-brand`, `.c-menu`, `.c-avatar`, `.c-author-info`, `.c-eye`          |
+| `sb-`   | Sidebar (rail lateral)               | `.sb-item`, `.sb-arrow`, `.sb-spacer`                                              |
+| `md-`   | Conteúdo markdown                    | `.md-h1`, `.md-p`, `.md-code`, `.md-strong`, `.md-list`, `.md-dash`, `.md-li-text` |
+| `px`    | Pixel do logo                        | `.px`, `.px.a`, `.px.hi`                                                           |
 
 Blocos estruturais usam nomes semânticos sem prefixo: `.app`, `.header`, `.author-row`, `.body-grid`, `.content-col`, `.sidebar-col`, `.title-block`, `.body-block`, `.icon`, `.avatar-sq`.
 
@@ -43,7 +44,9 @@ Modificadores são classes adicionais aplicadas ao lado da base (`.px.a`, `.px.h
 Reset local mínimo no topo da folha:
 
 ```css
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;

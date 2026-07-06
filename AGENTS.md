@@ -15,26 +15,122 @@ Remote ausente? `git remote add contracts https://github.com/Amarildo-correa/pro
 
 ## Estado atual do repositório
 
-Estágio de **scaffolding + documentação**, não de implementação:
+Estágio de **scaffolding + documentação**, não de implementação. Status detalhado (o que está vazio,
+por quê, decisões recentes e todos pendentes) vive em [`.specs/project/STATE.md`](.specs/project/STATE.md)
+— consulte antes de assumir que uma função, componente ou estilo existe: a árvore de diretórios
+sozinha não é evidência de implementação.
 
-- Todos os arquivos em `src/` (JS e CSS) e `public/favicon.svg` existem mas estão **vazios** — placeholders da árvore de arquivos planejada, não código funcional.
-- Todos os arquivos em `tests/` estão **vazios**.
-- `package.json` está **vazio** (sem scripts, sem dependências declaradas ainda).
-- O conteúdo real e atual do projeto vive em `design-system/references/` (documentação do Design System) e `api/openapi.yaml` (contrato via subtree).
+## Estrutura do repositório
 
-O agente MUST conferir se o arquivo correspondente tem conteúdo antes de assumir que uma função, componente ou estilo existe — a árvore de diretórios sozinha não é evidência de implementação.
+Árvore ASCII completa e atual (todo arquivo versionado, mais os diretórios vazios de `public/assets/`) —
+única fonte da árvore neste repositório, não reproduzida em nenhum outro documento. Anotações inline
+marcam só o que precisa de atenção imediata (vazio, somente leitura, entry point); justificativas e
+ressalvas mais longas ficam em tabela em [`.specs/codebase/STRUCTURE.md`](.specs/codebase/STRUCTURE.md).
+Status de implementação (o que está vazio e por quê) vive em [`.specs/project/STATE.md`](.specs/project/STATE.md).
 
-## Arquitetura alvo (quando implementada)
-
-O inventário completo de arquivos e responsabilidades é [`.specs/project/STRUCTURE.md`](.specs/project/STRUCTURE.md) (fonte da verdade). Pontos de entrada essenciais:
-
-| Caminho                          | Responsabilidade                                  |
-| -------------------------------- | ------------------------------------------------- |
-| `src/index.html`                 | Entry point único da SPA.                         |
-| `src/js/main.js`                 | Bootstrap (único `<script type="module">`).       |
-| `src/styles/settings/tokens.css` | Design Tokens (fonte da verdade dos valores CSS). |
-| `api/openapi.yaml`               | Contrato da API (somente leitura — via subtree).  |
-| `design-system/DESIGN.md`        | Índice do Design System.                          |
+```
+.
+├── .editorconfig
+├── .env.example
+├── .gitignore
+├── .github/
+│   ├── CODEOWNERS                          # protege api/ (revisão obrigatória)
+│   └── workflows/
+│       └── sync-contract.yml               # sincroniza api/ via Git Subtree
+├── .specs/
+│   ├── project/
+│   │   └── STATE.md                        # memória: decisões, status, todos
+│   └── codebase/
+│       └── STRUCTURE.md                    # regras de organização, ressalvas
+├── .vscode/
+│   ├── markdown-preview.css
+│   └── settings.json
+├── AGENTS.md                               # este arquivo — contexto único p/ agentes de IA
+├── CLAUDE.md                               # ponteiro para AGENTS.md
+├── README.md
+├── package.json
+├── package-lock.json
+├── api/                                    # somente leitura — sync automático, não editar
+│   ├── CHANGELOG.md
+│   └── openapi.yaml                        # stub — a expandir pelo repo de contratos
+├── design-system/
+│   ├── DESIGN.md                           # índice do Design System
+│   └── references/
+│       ├── tokens.md
+│       ├── themes.md                       # vazio
+│       ├── conventions.md
+│       ├── layout/
+│       │   └── mosaic-grid.md
+│       ├── components/
+│       │   ├── button.md
+│       │   ├── icon.md
+│       │   ├── avatar.md
+│       │   ├── brand.md
+│       │   ├── markdown-content.md
+│       │   ├── form.md                     # vazio
+│       │   ├── table.md                    # vazio
+│       │   ├── modal.md                    # vazio
+│       │   └── toast.md                    # vazio
+│       └── patterns/
+│           ├── crud-form-flow.md           # vazio
+│           ├── confirmation-modal.md       # vazio
+│           └── feedback-toast.md           # vazio
+├── public/
+│   ├── favicon.svg                         # vazio
+│   └── assets/                             # vazio, sem arquivos ainda
+│       ├── images/
+│       ├── icons/
+│       └── fonts/
+├── src/                                    # tudo abaixo é placeholder vazio (scaffolding)
+│   ├── index.html                          # entry point único da SPA
+│   ├── js/
+│   │   ├── main.js                         # bootstrap (único <script type="module">)
+│   │   ├── config/
+│   │   │   └── constants.js
+│   │   ├── services/
+│   │   │   ├── http.js                     # wrapper genérico de fetch
+│   │   │   └── records/
+│   │   │       └── records.service.js
+│   │   ├── components/
+│   │   │   ├── RecordForm.js
+│   │   │   ├── RecordTable.js
+│   │   │   ├── Modal.js
+│   │   │   └── Toast.js
+│   │   ├── state/
+│   │   │   └── store.js
+│   │   └── utils/
+│   │       ├── dom.js
+│   │       ├── validators.js
+│   │       └── formatters.js
+│   ├── pages/
+│   │   └── records/
+│   │       └── records.page.js
+│   └── styles/
+│       ├── main.css                        # orquestrador (@import na ordem ITCSS)
+│       ├── settings/
+│       │   ├── tokens.css                  # Design Tokens — fonte da verdade dos valores CSS
+│       │   └── themes.css
+│       ├── base/
+│       │   ├── reset.css
+│       │   └── typography.css
+│       ├── layout/
+│       │   ├── grid.css
+│       │   └── page.css
+│       ├── components/
+│       │   ├── button.css
+│       │   ├── form.css
+│       │   ├── table.css
+│       │   ├── modal.css
+│       │   └── toast.css
+│       └── utilities/
+│           └── helpers.css
+└── tests/                                  # vazio — sem runner configurado ainda p/ rodar
+    ├── unit/
+    │   ├── validators.test.js
+    │   └── formatters.test.js
+    └── integration/
+        └── records.service.test.js
+```
 
 O CSS segue ITCSS (`settings → base → layout → components → utilities`, via `@import` em `src/styles/main.css`). Convenções de arquitetura vanilla aplicáveis quando o roteamento/SPA for implementado: roteamento via History API (`pushState`/`popstate`, nunca hash routing); views retornam um contrato de lifecycle (`{ destroy }` ou `null`) e limpam subscriptions antes de trocar de view; `import()` dinâmico sempre com string literal estática.
 
